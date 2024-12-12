@@ -77,8 +77,11 @@ def classify_video(file_path):
     predicted_class = class_labels[int(average_stage)]
 
     return predicted_class
+@app.route('/')
+def abc():
+    return render_template('home.html', error=None)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         if 'file' not in request.files:
