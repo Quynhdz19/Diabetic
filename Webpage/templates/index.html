@@ -17,7 +17,6 @@
             height: 100vh;
             padding: 20px;
             box-sizing: border-box;
-            background: #bab7b7;
         }
 
         .container {
@@ -124,6 +123,7 @@
 
         .father {
             display: flex;
+            align-items: center;
         }
 
         .children {
@@ -140,6 +140,17 @@
             font-size: 18px;
             color: #333333;
         }
+        a {
+            color: white;
+            background-color: #4CAF50; /* Green color */
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-decoration: none; /* Remove underline */
+            font-family: Arial, sans-serif; /* Change font family */
+        }
 
     </style>
 
@@ -152,18 +163,29 @@
     <form method="POST" enctype="multipart/form-data" class="father">
         <div class="children">
             <div class="form-group">
-                <label class="label" for="email">Tên bệnh nhân:</label>
-                <input type="username" class="form-control" id="username" placeholder="Nhập tên " name="username">
+                <label class="label" for="username">Tên bệnh nhân:</label>
+                <input type="text" class="form-control" id="username" placeholder="Nhập tên " name="username">
             </div>
             <div class="form-group">
                 <label class="label" for="age">Tuổi:</label>
-                <input type="age" class="form-control" id="email" placeholder="Nhập tuổi" name="age">
+                <input  class="form-control" id="age" placeholder="Nhập tuổi" name="age">
+            </div>
+            <div class="form-group">
+                <label class="label" for="address">Địa chỉ:</label>
+                <input  class="form-control" id="address" placeholder="Nhập địa chỉ" name="address">
+            </div>
+            <div class="form-group">
+                <label class="label" for="activate">Biểu hiện:</label>
+                <textarea class="form-control" id="activate" placeholder="Nhập biểu hiện" name="activate"></textarea>
+            </div>
+            <div class="form-group">
+                <a href="/">Trở về</a>
             </div>
         </div>
 
         <div class="preview-container children">
             <label for="file" class="label-2">
-                Upload ảnh hoặc video võng mạc
+                Upload ảnh hoặc video võng mạc định dạng .jpg, .jpeg, .png, .mp4,
             </label>
             <img id="preview_image" src="" style="display: none;">
             <video id="preview_video" controls style="display: none;">

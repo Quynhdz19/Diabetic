@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
+from datetime import datetime
 from PIL import Image
 import numpy as np
 import tensorflow as tf
@@ -81,6 +82,30 @@ def classify_video(file_path):
 def abc():
     return render_template('home.html', error=None)
 
+@app.route('/activate')
+def activate():
+    return render_template('activate.html', error=None)
+@app.route('/support', methods=['GET', 'POST'])
+def support():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        message = request.form.get('message')
+
+        # Đường dẫn tới file txt
+        file_path = 'support_requests.txt'
+
+                # Ghi thông tin vào file txt
+        with open(file_path, 'a') as file:
+            file.write(f'Name: {name}\n')
+            file.write(f'Email: {email}\n')
+            file.write(f'Phone: {phone}\n')
+            file.write(f'Message: {message}\n')
+            file.write('-' * 20 + '\n')
+        return redirect('/')
+    return render_template('support.html', error=None)
+
 @app.route('/predict', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -90,6 +115,9 @@ def index():
         file = request.files['file']
         username = request.form.get('username')  # Lấy username từ form
         age = request.form.get('age')  # Lấy tuổi từ form
+        activate = request.form.get('activate')  # Lấy activate từ form
+        address = request.form.get('address')  # Lấy activate từ form
+        current_date = datetime.now().strftime('%d-%m-%Y')
 
         if file.filename == '':
             return render_template('result.html', error='No selected file')
@@ -106,7 +134,7 @@ def index():
             else:
                 return render_template('result.html', error='Unsupported file format')
 
-            return render_template('result.html', stage = stage,predicted_class=predicted_class, username=username, age=age, filename=file.filename)
+            return render_template('result.html', stage = stage,predicted_class=predicted_class, username=username, age=age, filename=file.filename, activate=activate, address=address, current_date=current_date)
 
     return render_template('index.html', error=None)
 

@@ -90,7 +90,36 @@
 </head>
 <body>
     <div class="container">
-        <h2>Kết quả chuẩn đoán</h2>
+        <h2>Phiếu kết quả chuẩn đoán</h2>
+        <table>
+            <tr>
+                <th>Tên bệnh nhân</th>
+                <th>Tuổi</th>
+                <th>Biểu hiện</th>
+                <th>Địa chỉ</th>
+                <th>Ngày khám</th>
+            </tr>
+            <tr>
+                <td>{{ username }}</td>
+                <td>{{ age }}</td>
+                <td>{{ activate }}</td>
+                <td>{{ address }}</td>
+                <th>{{ current_date}}</th>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Mức độ mức DR</th>
+                <th>Chuẩn đoán lâm sàng</th>
+                <th>Bác sĩ chuẩn đoán</th>
+            </tr>
+            <tr>
+                <td>{{ stage }}</td>
+                <td>{{ predicted_class }}</td>
+                <td>Lê Xuân Quỳnh</td>
+            </tr>
+        </table>
+        <br>
         <div style="display: flex">
             <div style="width: 50%">
               <img style="width: 80%" src="/static/{{filename}}">
@@ -125,22 +154,9 @@
                  </table>
             </div>
         </div>
-
+        <h3>Ảnh võng mạc</h3>
+        <p>Ảnh võng mạc của bệnh nhân</p>
         <br>
-        <table>
-            <tr>
-                <th>Tên bệnh nhân</th>
-                <th>Tuổi</th>
-                <th>Mức độ mức DR</th>
-                <th>Chuẩn đoán lâm sàng</th>
-            </tr>
-            <tr>
-                <td>{{ username }}</td>
-                <td>{{ age }}</td>
-                <td>{{ stage }}</td>
-                <td>{{ predicted_class }}</td>
-            </tr>
-        </table>
         <br><br>
     </div>
     <div class="container action">

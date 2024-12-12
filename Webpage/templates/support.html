@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ Bác Sĩ - Tư Vấn Bệnh Đái Tháo Đường</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container.body {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            height: calc(100vh - 200px);
+        }
+
+        header {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 120, 215, 0.29);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .contact-form {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 120, 215, 0.29);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Liên Hệ Bác Sĩ</h1>
+        <p>Nhận tư vấn chuyên sâu về bệnh đái tháo đường</p>
+    </div>
+</header>
+
+<section class="contact-form">
+    <div class="container body">
+        <h2>Vui lòng điền thông tin để nhận tư vấn</h2>
+        <form action="#" method="POST">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+
+            <label for="message">Nội dung câu hỏi:</label>
+            <textarea id="message" name="message" placeholder="Mô tả vấn đề bạn đang gặp phải" required></textarea>
+
+            <button type="submit">Gửi yêu cầu</button>
+        </form>
+    </div>
+    <a href="/">Trang chủ </a>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Liên Hệ Bác Sĩ - Tư Vấn Bệnh Đái Tháo Đường</p>
+    </div>
+</footer>
+</body>
+</html>
