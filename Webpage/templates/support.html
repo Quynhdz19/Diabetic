@@ -107,37 +107,85 @@
 
 <header>
     <div class="container">
-        <h1>Liên Hệ Bác Sĩ</h1>
-        <p>Nhận tư vấn chuyên sâu về bệnh đái tháo đường</p>
+        <h1 id="contact-title">Liên Hệ Bác Sĩ</h1>
+        <p id="contact-description">Nhận tư vấn chuyên sâu về bệnh đái tháo đường</p>
     </div>
 </header>
 
 <section class="contact-form">
     <div class="container body">
-        <h2>Vui lòng điền thông tin để nhận tư vấn</h2>
+        <h2 id="form-title">Vui lòng điền thông tin để nhận tư vấn</h2>
         <form action="#" method="POST">
-            <label for="name">Họ và tên:</label>
+            <label for="name" id="label-name">Họ và tên:</label>
             <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required>
 
-            <label for="email">Email:</label>
+            <label for="email" id="label-email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
 
-            <label for="phone">Số điện thoại:</label>
+            <label for="phone" id="label-phone">Số điện thoại:</label>
             <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
 
-            <label for="message">Nội dung câu hỏi:</label>
+            <label for="message" id="label-message">Nội dung câu hỏi:</label>
             <textarea id="message" name="message" placeholder="Mô tả vấn đề bạn đang gặp phải" required></textarea>
 
-            <button type="submit">Gửi yêu cầu</button>
+            <button type="submit" id="submit-button">Gửi yêu cầu</button>
         </form>
     </div>
-    <a href="/">Trang chủ </a>
+    <a href="/" id="home-link">Trang chủ </a>
 </section>
 
 <footer>
     <div class="container">
-        <p>&copy; 2024 Liên Hệ Bác Sĩ - Tư Vấn Bệnh Đái Tháo Đường</p>
+        <p  id="footer-text">&copy; 2024 Liên Hệ Bác Sĩ - Tư Vấn Bệnh Đái Tháo Đường</p>
     </div>
 </footer>
+<script>
+     // Lấy ngôn ngữ từ localStorage
+    const language = localStorage.getItem('language') || 'vi'; // Mặc định là 'vi' nếu không có ngôn ngữ trong localStorage
+
+    const translate = {
+        en: {
+            contactTitle: "Contact a Doctor",
+            contactDescription: "Get expert consultation on diabetes",
+            formTitle: "Please fill out the form to get advice",
+            labelName: "Full Name:",
+            labelEmail: "Email:",
+            labelPhone: "Phone Number:",
+            labelMessage: "Your Message:",
+            submitButton: "Submit Request",
+            homeLink: "Home",
+            footerText: "© 2024 Contact a Doctor - Diabetes Consultation"
+        },
+        vi: {
+            contactTitle: "Liên Hệ Bác Sĩ",
+            contactDescription: "Nhận tư vấn chuyên sâu về bệnh đái tháo đường",
+            formTitle: "Vui lòng điền thông tin để nhận tư vấn",
+            labelName: "Họ và tên:",
+            labelEmail: "Email:",
+            labelPhone: "Số điện thoại:",
+            labelMessage: "Nội dung câu hỏi:",
+            submitButton: "Gửi yêu cầu",
+            homeLink: "Trang chủ",
+            footerText: "© 2024 Liên Hệ Bác Sĩ - Tư Vấn Bệnh Đái Tháo Đường"
+        }
+    };
+
+    // Cập nhật nội dung trên trang theo ngôn ngữ
+    const translatePage = (lang) => {
+        document.getElementById("contact-title").textContent = translate[lang].contactTitle;
+        document.getElementById("contact-description").textContent = translate[lang].contactDescription;
+        document.getElementById("form-title").textContent = translate[lang].formTitle;
+        document.getElementById("label-name").textContent = translate[lang].labelName;
+        document.getElementById("label-email").textContent = translate[lang].labelEmail;
+        document.getElementById("label-phone").textContent = translate[lang].labelPhone;
+        document.getElementById("label-message").textContent = translate[lang].labelMessage;
+        document.getElementById("submit-button").textContent = translate[lang].submitButton;
+        document.getElementById("home-link").textContent = translate[lang].homeLink;
+        document.getElementById("footer-text").textContent = translate[lang].footerText;
+    };
+
+    // Gọi hàm để dịch trang
+    translatePage(language);
+</script>
 </body>
 </html>

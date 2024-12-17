@@ -61,60 +61,149 @@
 </head>
 <body>
 <header>
-    <h1>Biểu Hiện Của Bệnh Đái Tháo Đường</h1>
+    <h1 id="title">Biểu Hiện Của Bệnh Đái Tháo Đường</h1>
 </header>
 <div class="container">
     <div class="symptom">
         <img src="/static/div4.jpg" alt="Đi tiểu nhiều">
         <div>
-            <strong>Đi tiểu nhiều:</strong> Một trong những biểu hiện phổ biến nhất của bệnh đái tháo đường là đi tiểu thường xuyên, đặc biệt vào ban đêm.
+            <strong id="symptom1">Đi tiểu nhiều:</strong> <span id="description1">Một trong những biểu hiện phổ biến nhất của bệnh đái tháo đường là đi tiểu thường xuyên, đặc biệt vào ban đêm.</span>
             <ul>
-                <li>Đi tiểu trên 8 lần/ngày.</li>
-                <li>Thức dậy nhiều lần vào ban đêm để đi tiểu.</li>
+                <li id="point1">Đi tiểu trên 8 lần/ngày.</li>
+                <li id="point2">Thức dậy nhiều lần vào ban đêm để đi tiểu.</li>
             </ul>
         </div>
-
     </div>
     <div class="symptom">
         <img src="/static/div5.jpeg" alt="Khát nước nhiều">
         <div>
-            <strong>Khát nước nhiều:</strong> Bệnh đái tháo đường có thể gây ra cảm giác khát nước quá mức do cơ thể cố gắng bù đắp cho lượng nước mất qua việc đi tiểu nhiều.
+            <strong id="symptom2">Khát nước nhiều:</strong> <span id="description2">Bệnh đái tháo đường có thể gây ra cảm giác khát nước quá mức do cơ thể cố gắng bù đắp cho lượng nước mất qua việc đi tiểu nhiều.</span>
             <ul>
-                <li>Luôn cảm thấy khát dù đã uống nhiều nước.</li>
-                <li>Thích uống nước lạnh.</li>
+                <li id="point3">Luôn cảm thấy khát dù đã uống nhiều nước.</li>
+                <li id="point4">Thích uống nước lạnh.</li>
             </ul>
         </div>
     </div>
     <div class="symptom">
         <img src="/static/div6.jpeg" alt="Giảm cân không rõ nguyên nhân">
         <div>
-            <strong>Giảm cân không rõ nguyên nhân:</strong> Việc giảm cân đột ngột hoặc không chủ ý có thể xảy ra vì cơ thể sử dụng mỡ và cơ bắp để cung cấp năng lượng thay vì glucose.
+            <strong id="symptom3">Giảm cân không rõ nguyên nhân:</strong> <span id="description3">Việc giảm cân đột ngột hoặc không chủ ý có thể xảy ra vì cơ thể sử dụng mỡ và cơ bắp để cung cấp năng lượng thay vì glucose.</span>
             <ul>
-                <li>Giảm trên 5% trọng lượng cơ thể trong vòng 1-3 tháng.</li>
-                <li>Không thay đổi chế độ ăn uống hay tập luyện.</li>
+                <li id="point5">Giảm trên 5% trọng lượng cơ thể trong vòng 1-3 tháng.</li>
+                <li id="point6">Không thay đổi chế độ ăn uống hay tập luyện.</li>
             </ul>
         </div>
     </div>
     <div class="symptom">
         <img src="/static/div7.jpeg" alt="Mệt mỏi">
-        <div><strong>Mệt mỏi:</strong> Lượng đường trong máu cao có thể ảnh hưởng đến mức năng lượng của bạn, dẫn đến cảm giác mệt mỏi liên tục.
+        <div>
+            <strong id="symptom4">Mệt mỏi:</strong> <span id="description4">Lượng đường trong máu cao có thể ảnh hưởng đến mức năng lượng của bạn, dẫn đến cảm giác mệt mỏi liên tục.</span>
             <ul>
-                <li>Luôn cảm thấy kiệt sức sau khi ăn.</li>
-                <li>Khó tập trung vào công việc hàng ngày.</li>
+                <li id="point7">Luôn cảm thấy kiệt sức sau khi ăn.</li>
+                <li id="point8">Khó tập trung vào công việc hàng ngày.</li>
             </ul>
         </div>
     </div>
     <div class="symptom">
         <img src="/static/div8.jpeg" alt="Mờ mắt">
-        <div><strong>Mờ mắt:</strong> Bệnh đái tháo đường có thể gây ra thay đổi thị lực do lượng đường trong máu cao ảnh hưởng đến thấu kính của mắt.
+        <div>
+            <strong id="symptom5">Mờ mắt:</strong> <span id="description5">Bệnh đái tháo đường có thể gây ra thay đổi thị lực do lượng đường trong máu cao ảnh hưởng đến thấu kính của mắt.</span>
             <ul>
-                <li>Nhìn mờ, đặc biệt vào buổi chiều tối.</li>
-                <li>Khó đọc sách báo hoặc nhìn màn hình máy tính.</li>
+                <li id="point9">Nhìn mờ, đặc biệt vào buổi chiều tối.</li>
+                <li id="point10">Khó đọc sách báo hoặc nhìn màn hình máy tính.</li>
             </ul>
         </div>
     </div>
-    <a href="/">Trang chủ </a>
+    <a href="/" id="home">Trang chủ</a>
 </div>
+
+<script>
+    const language = localStorage.getItem('language') || 'vi'; // Mặc định là 'vi' nếu không có ngôn ngữ trong localStorage
+    const translate = {
+        en: {
+            title: "Symptoms of Diabetes",
+            symptom1: "Frequent Urination:",
+            description1: "One of the most common symptoms of diabetes is frequent urination, especially at night.",
+            point1: "Urinate more than 8 times a day.",
+            point2: "Wake up multiple times at night to urinate.",
+            symptom2: "Excessive Thirst:",
+            description2: "Diabetes can cause excessive thirst as the body tries to compensate for the water lost through frequent urination.",
+            point3: "Always feel thirsty even after drinking a lot of water.",
+            point4: "Prefer drinking cold water.",
+            symptom3: "Unexplained Weight Loss:",
+            description3: "Sudden or unintentional weight loss can occur because the body uses fat and muscle for energy instead of glucose.",
+            point5: "Lose more than 5% of body weight in 1-3 months.",
+            point6: "No changes in diet or exercise routine.",
+            symptom4: "Fatigue:",
+            description4: "High blood sugar can affect your energy levels, leading to persistent fatigue.",
+            point7: "Always feel exhausted after eating.",
+            point8: "Have trouble focusing on daily tasks.",
+            symptom5: "Blurred Vision:",
+            description5: "Diabetes can cause changes in vision as high blood sugar affects the eye's lens.",
+            point9: "Blurred vision, especially in the evening.",
+            point10: "Difficulty reading books or looking at computer screens.",
+            home: "Home"
+        },
+        vi: {
+            title: "Biểu Hiện Của Bệnh Đái Tháo Đường",
+            symptom1: "Đi tiểu nhiều:",
+            description1: "Một trong những biểu hiện phổ biến nhất của bệnh đái tháo đường là đi tiểu thường xuyên, đặc biệt vào ban đêm.",
+            point1: "Đi tiểu trên 8 lần/ngày.",
+            point2: "Thức dậy nhiều lần vào ban đêm để đi tiểu.",
+            symptom2: "Khát nước nhiều:",
+            description2: "Bệnh đái tháo đường có thể gây ra cảm giác khát nước quá mức do cơ thể cố gắng bù đắp cho lượng nước mất qua việc đi tiểu nhiều.",
+            point3: "Luôn cảm thấy khát dù đã uống nhiều nước.",
+            point4: "Thích uống nước lạnh.",
+            symptom3: "Giảm cân không rõ nguyên nhân:",
+            description3: "Việc giảm cân đột ngột hoặc không chủ ý có thể xảy ra vì cơ thể sử dụng mỡ và cơ bắp để cung cấp năng lượng thay vì glucose.",
+            point5: "Giảm trên 5% trọng lượng cơ thể trong vòng 1-3 tháng.",
+            point6: "Không thay đổi chế độ ăn uống hay tập luyện.",
+            symptom4: "Mệt mỏi:",
+            description4: "Lượng đường trong máu cao có thể ảnh hưởng đến mức năng lượng của bạn, dẫn đến cảm giác mệt mỏi liên tục.",
+            point7: "Luôn cảm thấy kiệt sức sau khi ăn.",
+            point8: "Khó tập trung vào công việc hàng ngày.",
+            symptom5: "Mờ mắt:",
+            description5: "Bệnh đái tháo đường có thể gây ra thay đổi thị lực do lượng đường trong máu cao ảnh hưởng đến thấu kính của mắt.",
+            point9: "Nhìn mờ, đặc biệt vào buổi chiều tối.",
+            point10: "Khó đọc sách báo hoặc nhìn màn hình máy tính.",
+            home: "Trang chủ"
+        }
+    };
+
+    // Cập nhật nội dung trên trang theo ngôn ngữ
+    const translatePage = (lang) => {
+        document.getElementById("title").textContent = translate[lang].title;
+        document.getElementById("symptom1").textContent = translate[lang].symptom1;
+        document.getElementById("description1").textContent = translate[lang].description1;
+        document.getElementById("point1").textContent = translate[lang].point1;
+        document.getElementById("point2").textContent = translate[lang].point2;
+
+        document.getElementById("symptom2").textContent = translate[lang].symptom2;
+        document.getElementById("description2").textContent = translate[lang].description2;
+        document.getElementById("point3").textContent = translate[lang].point3;
+        document.getElementById("point4").textContent = translate[lang].point4;
+
+        document.getElementById("symptom3").textContent = translate[lang].symptom3;
+        document.getElementById("description3").textContent = translate[lang].description3;
+        document.getElementById("point5").textContent = translate[lang].point5;
+        document.getElementById("point6").textContent = translate[lang].point6;
+
+        document.getElementById("symptom4").textContent = translate[lang].symptom4;
+        document.getElementById("description4").textContent = translate[lang].description4;
+        document.getElementById("point7").textContent = translate[lang].point7;
+        document.getElementById("point8").textContent = translate[lang].point8;
+
+        document.getElementById("symptom5").textContent = translate[lang].symptom5;
+        document.getElementById("description5").textContent = translate[lang].description5;
+        document.getElementById("point9").textContent = translate[lang].point9;
+        document.getElementById("point10").textContent = translate[lang].point10;
+
+        document.getElementById("home").textContent = translate[lang].home;
+    };
+
+    // Gọi hàm để dịch trang
+    translatePage(language);
+</script>
 <footer>
     <p>&copy; 2024 Tuyên Truyền Sức Khỏe</p>
 </footer>

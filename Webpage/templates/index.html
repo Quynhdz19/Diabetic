@@ -203,6 +203,53 @@
     {% endif %}
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const translations = {
+        en: {
+            patient_name: "Patient Name:",
+            age: "Age:",
+            address: "Address:",
+            symptoms: "Symptoms:",
+            back: "Back",
+            upload_label: "Upload retina image or video in .jpg, .jpeg, .png, .mp4 format",
+            submit: "Diagnose Image"
+        },
+        vi: {
+            patient_name: "Tên bệnh nhân:",
+            age: "Tuổi:",
+            address: "Địa chỉ:",
+            symptoms: "Biểu hiện:",
+            back: "Trở về",
+            upload_label: "Upload ảnh hoặc video võng mạc định dạng .jpg, .jpeg, .png, .mp4",
+            submit: "Chuẩn đoán hình ảnh"
+        }
+    };
+
+    const labels = {
+        patientName: document.querySelector("label[for='username']"),
+        age: document.querySelector("label[for='age']"),
+        address: document.querySelector("label[for='address']"),
+        symptoms: document.querySelector("label[for='activate']"),
+        upload: document.querySelector("label[for='file']"),
+        backLink: document.querySelector("a[href='/']"),
+        submitButton: document.querySelector("input[type='submit']")
+    };
+
+    // Lấy ngôn ngữ đã lưu trong localStorage hoặc mặc định là 'vi'
+    const savedLanguage = localStorage.getItem("language") || "vi";
+    updateLanguage(savedLanguage);
+
+    // Hàm cập nhật ngôn ngữ
+    function updateLanguage(language) {
+        labels.patientName.textContent = translations[language].patient_name;
+        labels.age.textContent = translations[language].age;
+        labels.address.textContent = translations[language].address;
+        labels.symptoms.textContent = translations[language].symptoms;
+        labels.upload.textContent = translations[language].upload_label;
+        labels.backLink.textContent = translations[language].back;
+        labels.submitButton.value = translations[language].submit;
+    }
+    updateLanguage(savedLanguage);
     const fileInput = document.getElementById('file');
     const previewImage = document.getElementById('preview_image');
     const previewVideo = document.getElementById('preview_video');
@@ -225,6 +272,8 @@
             previewVideo.style.display = 'block';
         }
     });
+});
+
 </script>
 
 

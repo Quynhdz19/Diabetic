@@ -48,7 +48,7 @@
 
         .menu div {
             width: 260px;
-            height: 100px;
+            height: 200px;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -69,14 +69,17 @@
         }
 
         .div1 {
+            height: 200px;
             background-image: url("static/div1.jpg");
         }
 
         .div2 {
+             height: 200px;
             background-image: url("static/div2.jpg");
         }
 
         .div3 {
+             height: 200px;
             background-image: url("static/div3.jpg");
         }
 
@@ -102,29 +105,78 @@
             z-index: -1;
             opacity: 0.3;
         }
+        select {
+            margin-top: 20px;
+            font-size: 16px;
+            padding: 5px;
+            color: black;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Chuẩn đoán lâm sàng mức DR đái tháo đường bằng ảnh võng mạc</h1>
+    <h1 id="title">Chuẩn đoán lâm sàng mức DR đái tháo đường bằng ảnh võng mạc</h1>
     <div class="menu">
         <div class="div1">
-            <a href="/predict">Chuẩn đoán bằng hình ảnh</a>
+            <a href="/predict" id="menu1">Chuẩn đoán bằng hình ảnh</a>
         </div>
         <div class="div2">
-            <a href="/activate">Một số biểu hiện bệnh đái tháo đường</a>
+            <a href="/activate" id="menu2">Một số biểu hiện bệnh đái tháo đường</a>
         </div>
         <div class="div3">
-            <a href="/support">Liên hệ tư vấn</a>
+            <a href="/support" id="menu3">Liên hệ tư vấn</a>
         </div>
+    </div>
+    <div>
+        <select id="language" name="language">
+            <option value="en">English</option>
+            <option value="vi" selected>Tiếng Việt</option>
+        </select>
     </div>
 </div>
 
 <div class="aaaa"></div>
 
 <script>
-    // Bạn có thể thêm các đoạn mã JavaScript ở đây nếu cần
+ document.addEventListener("DOMContentLoaded", function () {
+    const translations = {
+        en: {
+            title: "Clinical Diagnosis of Diabetic Retinopathy Levels Using Retinal Images",
+            menu1: "Diagnose with Images",
+            menu2: "Diabetes Symptoms",
+            menu3: "Contact Support"
+        },
+        vi: {
+            title: "Chuẩn đoán lâm sàng mức DR đái tháo đường bằng ảnh võng mạc",
+            menu1: "Chuẩn đoán bằng hình ảnh",
+            menu2: "Một số biểu hiện bệnh đái tháo đường",
+            menu3: "Liên hệ tư vấn"
+        }
+    };
+
+    const languageSelector = document.getElementById("language");
+
+    // Hàm cập nhật ngôn ngữ trên giao diện
+    function updateLanguage(language) {
+        document.getElementById("title").textContent = translations[language].title;
+        document.getElementById("menu1").textContent = translations[language].menu1;
+        document.getElementById("menu2").textContent = translations[language].menu2;
+        document.getElementById("menu3").textContent = translations[language].menu3;
+    }
+
+    // Đọc ngôn ngữ từ localStorage hoặc dùng mặc định là 'en'
+    const savedLanguage = localStorage.getItem("language") || "en";
+    languageSelector.value = savedLanguage;
+    updateLanguage(savedLanguage);
+
+    // Sự kiện khi thay đổi ngôn ngữ
+    languageSelector.addEventListener("change", function () {
+        const selectedLanguage = this.value;
+        localStorage.setItem("language", selectedLanguage); // Lưu vào localStorage
+        updateLanguage(selectedLanguage);
+    });
+});
 </script>
 
 </body>

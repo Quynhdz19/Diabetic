@@ -91,7 +91,7 @@
 <body>
     <div class="container">
         <h2>Phiếu kết quả chuẩn đoán</h2>
-        <table>
+        <table id="table1">
             <tr>
                 <th>Tên bệnh nhân</th>
                 <th>Tuổi</th>
@@ -107,7 +107,7 @@
                 <th>{{ current_date}}</th>
             </tr>
         </table>
-        <table>
+        <table id="table2">
             <tr>
                 <th>Mức độ mức DR</th>
                 <th>Chuẩn đoán lâm sàng</th>
@@ -125,11 +125,10 @@
               <img style="width: 80%" src="/static/{{filename}}">
                 <div >
                     <h3>Ảnh võng mạc</h3>
-                    <p>Ảnh võng mạc của bệnh nhân</p>
                 </div>
             </div>
             <div style="width: 50%">
-                <table>
+                <table id="table3">
                 <tr>
                     <th><b>Mức DR</b></th>
                     <th><b>Phân Loại</b></th>
@@ -163,21 +162,106 @@
         <br><br>
     </div>
     <div class="container action">
-        <a href="/">Trở về</a>
+        <a id="back" href="/">Trở về</a>
         <a style="background: #337ab7" id="download" >Tải kết quả chuẩn đoán</a>
     </div>
      <script>
-        document.getElementById("download").addEventListener("click", function () {
-            const element = document.querySelector(".container");
-            const options = {
-                margin: 1,
-                filename: 'ket_qua_chuan_doan.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 1 },
-                jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+         document.addEventListener("DOMContentLoaded", function () {
+            const translations = {
+                en: {
+                    result: "Diagnosis Result",
+                    patient_name: "Patient Name",
+                    age: "Age",
+                    symptoms: "Symptoms",
+                    address: "Address",
+                    exam_date: "Exam Date",
+                    dr_level: "DR Level",
+                    diagnosis: "Clinical Diagnosis",
+                    doctor: "Diagnosed by",
+                    retinal_image: "Retina Image",
+                    back: "Back",
+                    download: "Download Diagnosis Result",
+                    dr_level_description: [
+                        { level: 0, classification: "No DR (No diabetic retinopathy)" },
+                        { level: 1, classification: "Mild Non Proliferative DR" },
+                        { level: 2, classification: "Moderate Non Proliferative DR" },
+                        { level: 3, classification: "Severe Non Proliferative DR" },
+                        { level: 4, classification: "Proliferative DR" }
+                    ]
+                },
+                vi: {
+                    result: "Phiếu kết quả chuẩn đoán",
+                    patient_name: "Tên bệnh nhân",
+                    age: "Tuổi",
+                    symptoms: "Biểu hiện",
+                    address: "Địa chỉ",
+                    exam_date: "Ngày khám",
+                    dr_level: "Mức độ mức DR",
+                    diagnosis: "Chuẩn đoán lâm sàng",
+                    doctor: "Bác sĩ chuẩn đoán",
+                    retinal_image: "Ảnh võng mạc",
+                    back: "Trở về",
+                    download: "Tải kết quả chuẩn đoán",
+                    dr_level_description: [
+                        { level: 0, classification: "No DR (Không bị bệnh võng mạc do tiểu đường)" },
+                        { level: 1, classification: "Mild Non Proliferative DR (Bệnh võng mạc không tăng sinh mức độ nhẹ)" },
+                        { level: 2, classification: "Moderate Non Proliferative DR (Bệnh võng mạc không tăng sinh mức độ trung bình)" },
+                        { level: 3, classification: "Severe Non Proliferative DR (Bệnh võng mạc không tăng sinh mức độ nặng)" },
+                        { level: 4, classification: "Proliferative DR (Giai đoạn tăng sinh của bệnh võng mạc)" }
+                    ]
+                }
             };
-            html2pdf().set(options).from(element).save();
+
+            // Lấy ngôn ngữ từ localStorage, nếu không có thì mặc định là 'vi'
+            const savedLanguage = localStorage.getItem("language") || "vi";
+            updateLanguage(savedLanguage);
+
+            function updateLanguage(language) {
+                // Cập nhật tiêu đề
+                document.querySelector('h2').textContent = translations[language].result;
+
+                // Cập nhật bảng kết quả chuẩn đoán
+                document.querySelector("#table1 th:nth-child(1)").textContent = translations[language].patient_name;
+                document.querySelector("#table1 th:nth-child(2)").textContent = translations[language].age;
+                document.querySelector("#table1 th:nth-child(3)").textContent = translations[language].symptoms;
+                document.querySelector("#table1 th:nth-child(4)").textContent = translations[language].address;
+                document.querySelector("#table1 th:nth-child(5)").textContent = translations[language].exam_date;
+
+                // Cập nhật bảng mức độ DR
+                document.querySelector("#table2 th:nth-child(1)").textContent = translations[language].dr_level;
+                document.querySelector("#table2 th:nth-child(2)").textContent = translations[language].diagnosis;
+                document.querySelector("#table2 th:nth-child(3)").textContent = translations[language].doctor;
+
+                 // Cập nhật các phần khác
+                document.querySelector("h3").textContent = translations[language].retinal_image;
+                document.getElementById("back").textContent = translations[language].back;
+                document.getElementById("download").textContent = translations[language].download;
+                // Cập nhật mô tả mức độ DR
+                const drTableRows = document.querySelectorAll("#table3 tr");
+                const drLevels = translations[language].dr_level_description;
+
+                drTableRows.forEach((row, index) => {
+                    if (index > 0 && index <= drLevels.length) {
+                        row.cells[1].textContent = drLevels[index - 1].classification;
+                    }
+                });
+
+
+            }
+
+             document.getElementById("download").addEventListener("click", function () {
+                const element = document.querySelector(".container");
+                const options = {
+                    margin: 1,
+                    filename: 'ket_qua_chuan_doan.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 1 },
+                    jsPDF: { unit: 'in', format: 'a3', orientation: 'landscape' }
+                };
+                html2pdf().set(options).from(element).save();
+            });
         });
+
     </script>
 </body>
 </html>
